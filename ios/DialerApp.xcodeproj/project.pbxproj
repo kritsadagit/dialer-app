@@ -8,22 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		0C80B921A6F3F58F76C31292 /* libPods-DialerApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-DialerApp.a */; };
+		1034F1652F7742EA98C508F7 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99E9049106C346378B16C573 /* Lato-BlackItalic.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		34DF093E0833411DBA4C6FFC /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F971B954FF941E5BC5BB6D4 /* Lato-Black.ttf */; };
+		35E2F50150894AFDA32DDB52 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB7BC1A46F4347419914B8FD /* Lato-LightItalic.ttf */; };
+		38383216B0B64623966E4DD9 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E06E9A453224D12B5F23FFC /* Lato-Italic.ttf */; };
+		394FE63251F84AFF82E0BACA /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9BF0F32E5D0D4A68B9E95FAD /* Lato-Bold.ttf */; };
 		6D4763D3CBBB25DF7950E88C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8B70DF6C888044B5A8878103 /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF9B7FF0AF0841E59E8D58CE /* Lato-ThinItalic.ttf */; };
+		9D20C0CDB08648289D6847A7 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFF1F8BFF4B5442A9CA7E254 /* Lato-BoldItalic.ttf */; };
+		9D21E782A61244B0962A1F04 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CE6BE6137324674A6A2F099 /* Lato-Light.ttf */; };
+		E615ED25A72F4AC983B0C383 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D171055739B94D59906B6591 /* Lato-Thin.ttf */; };
+		FE5AC5DFF9674A15BB3BB8B1 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 065F081ADCF34DDA88695BDD /* Lato-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		065F081ADCF34DDA88695BDD /* Lato-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Regular.ttf"; path = "../assets/fonts/Lato-Regular.ttf"; sourceTree = "<group>"; };
+		0E06E9A453224D12B5F23FFC /* Lato-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Italic.ttf"; path = "../assets/fonts/Lato-Italic.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* DialerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DialerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = DialerApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = DialerApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = DialerApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		2F971B954FF941E5BC5BB6D4 /* Lato-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Black.ttf"; path = "../assets/fonts/Lato-Black.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-DialerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DialerApp.debug.xcconfig"; path = "Target Support Files/Pods-DialerApp/Pods-DialerApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-DialerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DialerApp.release.xcconfig"; path = "Target Support Files/Pods-DialerApp/Pods-DialerApp.release.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-DialerApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DialerApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CE6BE6137324674A6A2F099 /* Lato-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Light.ttf"; path = "../assets/fonts/Lato-Light.ttf"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = DialerApp/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = DialerApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		99E9049106C346378B16C573 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-BlackItalic.ttf"; path = "../assets/fonts/Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		9BF0F32E5D0D4A68B9E95FAD /* Lato-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Bold.ttf"; path = "../assets/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; };
+		AB7BC1A46F4347419914B8FD /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-LightItalic.ttf"; path = "../assets/fonts/Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		AFF1F8BFF4B5442A9CA7E254 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-BoldItalic.ttf"; path = "../assets/fonts/Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		CF9B7FF0AF0841E59E8D58CE /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-ThinItalic.ttf"; path = "../assets/fonts/Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
+		D171055739B94D59906B6591 /* Lato-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Thin.ttf"; path = "../assets/fonts/Lato-Thin.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -51,6 +71,23 @@
 			name = DialerApp;
 			sourceTree = "<group>";
 		};
+		1C760E72F6A24052BB380396 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2F971B954FF941E5BC5BB6D4 /* Lato-Black.ttf */,
+				99E9049106C346378B16C573 /* Lato-BlackItalic.ttf */,
+				9BF0F32E5D0D4A68B9E95FAD /* Lato-Bold.ttf */,
+				AFF1F8BFF4B5442A9CA7E254 /* Lato-BoldItalic.ttf */,
+				0E06E9A453224D12B5F23FFC /* Lato-Italic.ttf */,
+				6CE6BE6137324674A6A2F099 /* Lato-Light.ttf */,
+				AB7BC1A46F4347419914B8FD /* Lato-LightItalic.ttf */,
+				065F081ADCF34DDA88695BDD /* Lato-Regular.ttf */,
+				D171055739B94D59906B6591 /* Lato-Thin.ttf */,
+				CF9B7FF0AF0841E59E8D58CE /* Lato-ThinItalic.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +112,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				1C760E72F6A24052BB380396 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -161,6 +199,16 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				6D4763D3CBBB25DF7950E88C /* PrivacyInfo.xcprivacy in Resources */,
+				34DF093E0833411DBA4C6FFC /* Lato-Black.ttf in Resources */,
+				1034F1652F7742EA98C508F7 /* Lato-BlackItalic.ttf in Resources */,
+				394FE63251F84AFF82E0BACA /* Lato-Bold.ttf in Resources */,
+				9D20C0CDB08648289D6847A7 /* Lato-BoldItalic.ttf in Resources */,
+				38383216B0B64623966E4DD9 /* Lato-Italic.ttf in Resources */,
+				9D21E782A61244B0962A1F04 /* Lato-Light.ttf in Resources */,
+				35E2F50150894AFDA32DDB52 /* Lato-LightItalic.ttf in Resources */,
+				FE5AC5DFF9674A15BB3BB8B1 /* Lato-Regular.ttf in Resources */,
+				E615ED25A72F4AC983B0C383 /* Lato-Thin.ttf in Resources */,
+				8B70DF6C888044B5A8878103 /* Lato-ThinItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +308,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y2J58QU7SX;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = DialerApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
@@ -275,8 +324,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = DialerApp;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -288,6 +340,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y2J58QU7SX;
 				INFOPLIST_FILE = DialerApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -302,7 +355,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = DialerApp;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
