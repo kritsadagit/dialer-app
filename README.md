@@ -224,4 +224,9 @@ npm start
 แล้วคลิกเลือก Reload เป็นอันเสร็จสิ้น  
 
 *** หมายเหตุ หากรันด้วย Device จริง ให้ทำคล้ายกับ Emulator โดยการ 
-รันแอป DialerApp ขึ้นมาและ ค้นหาเลข adb และ reverse tcp แบบเดียวกับ Emulator
+รันแอป DialerApp ขึ้นมาและ ค้นหาเลข adb และ reverse tcp แบบเดียวกับ Emulator 
+
+
+  
+
+หากติดปัญหาติดต่อได้ที่ kritsada.buain@hotmail.com
