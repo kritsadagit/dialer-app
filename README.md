@@ -57,7 +57,7 @@
   export PATH=$PATH:$ANDROID_HOME/emulator
   export PATH=$PATH:$ANDROID_HOME/platform-tools
   ```
-- เปิด **VSCode** และเปิดโปรเจคต์ open -> DialerApp จากนั้นกดปุ่ม Open
+- เปิด **VSCode** และเปิดโปรเจคต์ open -> dialer-app-main จากนั้นกดปุ่ม Open
    
 - ในช่อง terminal ของ VSCode ให้ติดตั้ง node_modules ด้วยคำสั่ง
   ```bash
@@ -65,12 +65,12 @@
 - สตาร์ท server ด้วยคำสั่ง
   ```bash
   npm start
-- เปิด Android Studio และเปิดโปรเจคต์ open -> DialerApp -> android และคลิกปุ่ม Open
+- เปิด Android Studio และเปิดโปรเจคต์ open -> dialer-app-main -> android และคลิกปุ่ม Open
 
 จากนั้นรอ Android Studio Building สักครู่ (สังเกตจากหลอดมุมขวาล่าง) 
 - เลือก Emulator ที่ต้องการเปิด (หากไม่มีให้สร้างใน Device Manager) หากมีให้แล้วกดปุ่ม Run ได้เลย
      
-- เมื่อ Emulator รันแอป DialerApp ขึ้นมาแล้ว ให้ค้นหาเลข adb ใน terminal VSCode
+- เมื่อ Emulator รันแอป dialer-app-main ขึ้นมาแล้ว ให้ค้นหาเลข adb ใน terminal VSCode
   ```bash
   adb devices
 (หาก adb ถูกติดตั้งแล้ว) จะแสดงข้อความ 
@@ -183,7 +183,7 @@ adb --version
 ```
 ถ้าทุกอย่างถูกตั้งค่าเรียบร้อย, จะเห็นเวอร์ชันของ adb 
 
-- เปิด <VSCode> และเปิดโปรเจคต์ open -> DialerApp จากนั้นกดปุ่ม Open
+- เปิด <VSCode> และเปิดโปรเจคต์ open -> dialer-app-main จากนั้นกดปุ่ม Open
   
 ในช่อง terminal ของ VSCode ให้ติดตั้ง node_modules ด้วยคำสั่ง 
 ```bash
@@ -193,7 +193,7 @@ npm install
 ```bash
 npm start
 ```
-- เปิด Android Studio และเปิดโปรเจคต์ open -> DialerApp -> android และคลิกปุ่ม Open
+- เปิด Android Studio และเปิดโปรเจคต์ open -> dialer-app-main -> android และคลิกปุ่ม Open
 
 จากนั้นรอ Android Studio Building สักครู่ (สังเกตจากหลอดมุมขวาล่าง) 
 - เลือก Emulator ที่ต้องการเปิด (หากไม่มีให้สร้างใน Device Manager) หากมีให้แล้วกดปุ่ม Run ได้เลย
