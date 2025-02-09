@@ -4,7 +4,7 @@
     [1.1 macOS]
     [Android]
     - ติดตัั้ง Homebrew (อ้างอิงจาก https://brew.sh/)
-      เปิด terminal 
+    - เปิด terminal 
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     - ติดตั้ง Node
         brew install node
