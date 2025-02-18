@@ -3,7 +3,7 @@ import DeviceInfo from "react-native-device-info";
 const isTablet = DeviceInfo.isTablet()
 
 export const FONTSIZE_MED = isTablet ? 70 : 40;
-export const FONTSIZE_LARGE = isTablet ? 80 : 50;
+export const FONTSIZE_LARGE = isTablet ? 80 : 45;
 
 export const PRIMARY_COLOR = "#316E6A";
 export const SECONDARY_COLOR = "#83A8A5";

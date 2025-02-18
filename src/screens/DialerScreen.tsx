@@ -1,4 +1,4 @@
-import {View, StyleSheet, useWindowDimensions, Vibration, TextInput} from "react-native";
+import {View, StyleSheet, useWindowDimensions, Vibration, TextInput, Alert} from "react-native";
 import React, {useEffect, useRef, useState} from "react";
 import KeypadButton from "../components/KeypadButton";
 import {BGCOLOR} from "../../styles/globalStyles";
@@ -18,12 +18,21 @@ const DialerScreen = () => {
     }
   }, [input]);
 
-  const recieveInput = (item: string) => {
-    setInput(item);
-  };
-
   const recieveKeypad = (item: string) => {
-    setInput(prevState => prevState + item);
+    setInput(prevState => {
+      const numOnly = (prevState + item).replace(/[^0-9]/g, "");
+      const len = numOnly.length;
+      let formatted = "";
+
+      if (len <= 3) {
+        formatted = numOnly;
+      } else if (len <= 6) {
+        formatted = `(${numOnly.slice(0, 3)}) ${numOnly.slice(3, 6)}`;
+      } else if (len > 6) {
+        formatted += `(${numOnly.slice(0, 3)}) ${numOnly.slice(3, 6)}-${numOnly.slice(6, 10)}`;
+      }
+      return formatted;
+    });
   };
 
   const recieveDelPress = () => {
@@ -38,7 +47,7 @@ const DialerScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.section}>
-        <InputDisplay input={input} senderInput={recieveInput} inputRef={inputRef} />
+        <InputDisplay input={input} inputRef={inputRef} />
       </View>
 
       <View style={[styles.section, {paddingVertical: height * 0.05}]}>

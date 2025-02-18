@@ -24,8 +24,6 @@ const KeypadButton: FC<Props> = ({input, senderKeypad, senderDelPress, senderDel
   const _spacingGap = isTablet ? scale * 14 : scale * 7;
   const buttonSize = isTablet ? scale * 70 : scale * 30;
 
-  console.log("isTablet: ", isTablet);
-
   const [activeButton, setActiveButton] = useState<string | null>(null);
 
   const onHandlePressIn = (item: string) => {
@@ -41,6 +39,12 @@ const KeypadButton: FC<Props> = ({input, senderKeypad, senderDelPress, senderDel
       senderDelPress();
     } else {
       senderKeypad(item);
+    }
+  };
+
+  const onHandleFormat = (input: string) => {
+    if (input.length === 4) {
+      console.log("input: ", input);
     }
   };
 
