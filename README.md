@@ -3,7 +3,7 @@
 1. Set Up Your Environment
 [1.1 macOS]
 [Android]
-- ติดตัั้ง Homebrew (อ้างอิงจาก https://brew.sh/)
+- ติดตั้ง Homebrew (อ้างอิงจาก https://brew.sh/)
 - เปิด terminal
   ```bash
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
