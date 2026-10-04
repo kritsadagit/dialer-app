@@ -1,9 +1,9 @@
 import {View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from './styles';
-import DialerViewModel from '../viewmodels';
-import InputNumber from '../components/input-number';
-import KeypadButton from '../components/keypad-button';
+import DialerViewModel from '../../viewmodels/DialerViewModel';
+import InputNumber from '../../components/input-number';
+import KeypadButton from '../../components/keypad-button';
 
 const DialerScreen = () => {
   const {
@@ -13,7 +13,7 @@ const DialerScreen = () => {
     recieveKeypad,
     recieveDelPress,
     recieveDelLongPress,
-    onHandleCall
+    onHandleCall,
   } = DialerViewModel();
 
   return (
