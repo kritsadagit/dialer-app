@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC, memo, useCallback, useMemo, useState} from 'react';
 import {
   Text,
   View,
@@ -16,6 +16,18 @@ interface Props {
   senderKeypad: (item: string) => void;
   senderDelPress: () => void;
   senderDelLongPress: () => void;
+}
+
+interface KeypadKeyProps {
+  item: string;
+  isActive: boolean;
+  buttonSize: number;
+  sizeIcons: number;
+  scale: number;
+  onPress: (item: string) => void;
+  onPressIn: (item: string) => void;
+  onPressOut: () => void;
+  onLongPress: (item: string) => void;
 }
 
 const DIAL_PAD = [
@@ -36,62 +48,34 @@ const DIAL_PAD = [
   'del',
 ];
 
-const KeypadButton: FC<Props> = ({
-  senderKeypad,
-  senderDelPress,
-  senderDelLongPress,
-}) => {
-  const {scale} = useWindowDimensions();
-  const isTablet = DeviceInfo.isTablet();
-  const _spacingGap = isTablet ? scale * 14 : scale * 7;
-  const buttonSize = isTablet ? scale * 70 : scale * 30;
-
-  const [activeButton, setActiveButton] = useState<string | null>(null);
-
-  const onHandlePressIn = (item: string) => {
-    setActiveButton(item);
-  };
-
-  const onHandlePressOut = () => {
-    setActiveButton(null);
-  };
-
-  const onPressKeypad = (item: string) => {
-    if (item === 'del') {
-      senderDelPress();
-    } else {
-      senderKeypad(item);
-    }
-  };
-
-  const onHandleLongPress = (item: string) => {
-    if (item === 'del') {
-      senderDelLongPress();
-    }
-  };
-
-  const renderIcon = (isStarButton: boolean) => {
-    return isStarButton ? star : backspace;
-  };
-
-  const renderKeypadButton = ({item}: {item: string}) => {
-    const isActive = item === activeButton;
-    const buttonColor = isActive ? PRIMARY_COLOR : SECONDARY_COLOR;
-    const isStarButton = item === '*';
-    const isDelButton = item === 'del';
-    const sizeIcons = isTablet ? scale * 22 : scale * 12;
-
+// Memoized so pressing one key only re-renders that key, not the whole pad.
+const KeypadKey = memo<KeypadKeyProps>(
+  ({
+    item,
+    isActive,
+    buttonSize,
+    sizeIcons,
+    scale,
+    onPress,
+    onPressIn,
+    onPressOut,
+    onLongPress,
+  }) => {
     if (item === '') {
       // Invisible spacer to keep the del button aligned to the right column
       return <View style={{width: buttonSize, height: buttonSize}} />;
     }
 
+    const isStarButton = item === '*';
+    const isDelButton = item === 'del';
+    const buttonColor = isActive ? PRIMARY_COLOR : SECONDARY_COLOR;
+
     return (
       <TouchableOpacity
-        onPress={() => onPressKeypad(item)}
-        onPressIn={() => onHandlePressIn(item)}
-        onLongPress={() => onHandleLongPress(item)}
-        onPressOut={onHandlePressOut}
+        onPress={() => onPress(item)}
+        onPressIn={() => onPressIn(item)}
+        onLongPress={() => onLongPress(item)}
+        onPressOut={onPressOut}
         activeOpacity={1}
         style={[
           styles.button,
@@ -105,7 +89,7 @@ const KeypadButton: FC<Props> = ({
       >
         {isDelButton || isStarButton ? (
           <Image
-            source={renderIcon(isStarButton)}
+            source={isStarButton ? star : backspace}
             style={{width: sizeIcons, height: sizeIcons}}
           />
         ) : (
@@ -118,15 +102,89 @@ const KeypadButton: FC<Props> = ({
         )}
       </TouchableOpacity>
     );
-  };
+  },
+);
+
+const KeypadButton: FC<Props> = ({
+  senderKeypad,
+  senderDelPress,
+  senderDelLongPress,
+}) => {
+  const {scale} = useWindowDimensions();
+  const isTablet = useMemo(() => DeviceInfo.isTablet(), []);
+
+  const {spacingGap, buttonSize, sizeIcons} = useMemo(
+    () => ({
+      spacingGap: isTablet ? scale * 14 : scale * 7,
+      buttonSize: isTablet ? scale * 70 : scale * 30,
+      sizeIcons: isTablet ? scale * 22 : scale * 12,
+    }),
+    [isTablet, scale],
+  );
+
+  const [activeButton, setActiveButton] = useState<string | null>(null);
+
+  const onHandlePressIn = useCallback((item: string) => {
+    setActiveButton(item);
+  }, []);
+
+  const onHandlePressOut = useCallback(() => {
+    setActiveButton(null);
+  }, []);
+
+  const onPressKeypad = useCallback(
+    (item: string) => {
+      if (item === 'del') {
+        senderDelPress();
+      } else {
+        senderKeypad(item);
+      }
+    },
+    [senderDelPress, senderKeypad],
+  );
+
+  const onHandleLongPress = useCallback(
+    (item: string) => {
+      if (item === 'del') {
+        senderDelLongPress();
+      }
+    },
+    [senderDelLongPress],
+  );
+
+  const renderKeypadButton = useCallback(
+    ({item}: {item: string}) => (
+      <KeypadKey
+        item={item}
+        isActive={item === activeButton}
+        buttonSize={buttonSize}
+        sizeIcons={sizeIcons}
+        scale={scale}
+        onPress={onPressKeypad}
+        onPressIn={onHandlePressIn}
+        onPressOut={onHandlePressOut}
+        onLongPress={onHandleLongPress}
+      />
+    ),
+    [
+      activeButton,
+      buttonSize,
+      sizeIcons,
+      scale,
+      onPressKeypad,
+      onHandlePressIn,
+      onHandlePressOut,
+      onHandleLongPress,
+    ],
+  );
 
   return (
     <FlatList
       data={DIAL_PAD}
       numColumns={3}
       renderItem={renderKeypadButton}
-      columnWrapperStyle={{gap: _spacingGap}}
-      contentContainerStyle={{gap: _spacingGap}}
+      columnWrapperStyle={{gap: spacingGap}}
+      contentContainerStyle={{gap: spacingGap}}
       keyExtractor={(_, index) => index.toString()}
       showsVerticalScrollIndicator={false}
       showsHorizontalScrollIndicator={false}
