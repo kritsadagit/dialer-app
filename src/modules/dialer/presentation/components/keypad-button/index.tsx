@@ -1,6 +1,7 @@
 import React, {FC, useState} from 'react';
 import {
   Text,
+  View,
   FlatList,
   TouchableOpacity,
   useWindowDimensions,
@@ -8,46 +9,40 @@ import {
 } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import {backspace, star} from '@assets/icons';
-import {
-  BGCOLOR,
-  SECONDARY_COLOR,
-  PRIMARY_COLOR,
-  DARK_COLOR,
-} from '@styles/globalStyles';
+import {SECONDARY_COLOR, PRIMARY_COLOR, DARK_COLOR} from '@styles/globalStyles';
 import {styles} from './styles';
 
 interface Props {
-  input: string;
   senderKeypad: (item: string) => void;
   senderDelPress: () => void;
   senderDelLongPress: () => void;
 }
 
+const DIAL_PAD = [
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '*',
+  '0',
+  '#',
+  '',
+  '',
+  'del',
+];
+
 const KeypadButton: FC<Props> = ({
-  input,
   senderKeypad,
   senderDelPress,
   senderDelLongPress,
 }) => {
   const {scale} = useWindowDimensions();
   const isTablet = DeviceInfo.isTablet();
-  const dialPad = [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '*',
-    '0',
-    '#',
-    '',
-    '',
-    'del',
-  ];
   const _spacingGap = isTablet ? scale * 14 : scale * 7;
   const buttonSize = isTablet ? scale * 70 : scale * 30;
 
@@ -69,12 +64,6 @@ const KeypadButton: FC<Props> = ({
     }
   };
 
-  const onHandleFormat = (input: string) => {
-    if (input.length === 4) {
-      console.log('input: ', input);
-    }
-  };
-
   const onHandleLongPress = (item: string) => {
     if (item === 'del') {
       senderDelLongPress();
@@ -92,9 +81,13 @@ const KeypadButton: FC<Props> = ({
     const isDelButton = item === 'del';
     const sizeIcons = isTablet ? scale * 22 : scale * 12;
 
+    if (item === '') {
+      // Invisible spacer to keep the del button aligned to the right column
+      return <View style={{width: buttonSize, height: buttonSize}} />;
+    }
+
     return (
       <TouchableOpacity
-        disabled={item === ''}
         onPress={() => onPressKeypad(item)}
         onPressIn={() => onHandlePressIn(item)}
         onLongPress={() => onHandleLongPress(item)}
@@ -103,7 +96,7 @@ const KeypadButton: FC<Props> = ({
         style={[
           styles.button,
           {
-            backgroundColor: item === '' ? BGCOLOR : buttonColor,
+            backgroundColor: buttonColor,
             width: buttonSize,
             height: buttonSize,
             borderRadius: scale * 100,
@@ -129,7 +122,7 @@ const KeypadButton: FC<Props> = ({
 
   return (
     <FlatList
-      data={dialPad}
+      data={DIAL_PAD}
       numColumns={3}
       renderItem={renderKeypadButton}
       columnWrapperStyle={{gap: _spacingGap}}

@@ -1,10 +1,9 @@
 import {StyleSheet} from 'react-native';
-import {BGCOLOR} from '@styles/globalStyles';
 
 export const styles = StyleSheet.create({
   safeAreaContainer: {
     flex: 1,
-    backgroundColor: BGCOLOR,
+    backgroundColor: '#fff',
   },
   container: {
     flex: 1,
