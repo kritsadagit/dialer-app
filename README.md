@@ -1,232 +1,105 @@
-อ้างอิงจาก https://reactnative.dev/docs/set-up-your-environment
+<p align="center">
+   <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://reactnative.dev/react-native-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://reactnative.dev/react-native-light.svg">
+      <img alt="React Native logo" src="https://reactnative.dev/react-native-light.svg" height="80">
+    </picture>
+</p>
 
-1. Set Up Your Environment
-[1.1 macOS]
-[Android]
-- ติดตั้ง Homebrew (อ้างอิงจาก https://brew.sh/)
-- เปิด terminal
-  ```bash
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  ```
-- ติดตั้ง Node
-  ```bash
-  brew install node
-  ```
-- ติดตั้ง Watchman
-  ```bash
-  brew install watchman
-  ```
-- ติดตั้ง Java Development Kit
-  ```bash
-  brew install --cask zulu@17
-- ไปยัง folder ที่ติดตั้ง
-  ```bash
-  open /opt/homebrew/Caskroom/zulu@17/
-- เข้าไปยัง folder และ Double click ไฟล์ <Double-Click to Install Azul Zulu JDK 17.pkg> เพื่อติดตั้ง JDK Version17
-- หลังจากติดตั้ง JDK ให้ add (หากยังไม่มี) หรือ update ไฟล์ environment ใน ~/.zshrc หรือใน ~/.bash_profile เปิดไฟล์ zshrc หากใช้ zsh
-  ```bash
-  open ~/.zshrc
-  ```
-- วางบรรทัดนี้ในไฟล์ zshrc (หากใช้ zsh) เพื่อบอกระบบว่าตำแหน่งของ JDK ที่ติดตั้งแล้วอยู่ที่ไหน
-  ```bash
-  export JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home
-- บันทึกและออก จากนั้นพิมพ์คำสั่งนี้เพื่อให้เสร็จสิ้นการอัปเดต ENV ของ JDK
-  ```bash
-  source ~/.zshrc
-- ตรวจสอบว่า jdk ถูกติดตั้งเรียบร้อยจะแสดงเลข version
-  ```bash
-  java -version
-- ดาวน์โหลดและติดตั้ง [Android Studio] https://developer.android.com/studio
-  
-  ในระหว่างการติดตั้ง Android Studio, จะมีหน้าต่าง Installation ที่ให้เลือกและติดตั้งส่วนประกอบต่างๆ
-  
-  ทำเครื่องหมายในช่อง (checkbox)
-  
-  Android SDK
-  
-  Android SDK Platform
-  
-  Android Virtual Device   และ คลิก Next 
-- Configure ค่า ANDROID_HOME environment เปิดไฟล์ zshrc หากใช้ zsh
-  ```bash
-  open ~/.zshrc
-  ```
-วางบรรทัดเหล่านี้ในไฟล์ zshrc (หากใช้ zsh)
-  ```bash
-  export ANDROID_HOME=$HOME/Library/Android/sdk
-  export PATH=$PATH:$ANDROID_HOME/emulator
-  export PATH=$PATH:$ANDROID_HOME/platform-tools
-  ```
-- เปิด **VSCode** และเปิดโปรเจคต์ open -> dialer-app-main จากนั้นกดปุ่ม Open
-   
-- ในช่อง terminal ของ VSCode ให้ติดตั้ง node_modules ด้วยคำสั่ง
-  ```bash
-  npm install
-- สตาร์ท server ด้วยคำสั่ง
-  ```bash
-  npm start
-- เปิด Android Studio และเปิดโปรเจคต์ open -> dialer-app-main -> android และคลิกปุ่ม Open
+<p align="center">
+  <strong>Learn once, write anywhere:</strong><br>
+  Create native apps for Android, iOS, and more using React
+</p>
 
-จากนั้นรอ Android Studio Building สักครู่ (สังเกตจากหลอดมุมขวาล่าง) 
-- เลือก Emulator ที่ต้องการเปิด (หากไม่มีให้สร้างใน Device Manager) หากมีให้แล้วกดปุ่ม Run ได้เลย
-     
-- เมื่อ Emulator รันแอป dialer-app-main ขึ้นมาแล้ว ให้ค้นหาเลข adb ใน terminal VSCode
-  ```bash
-  adb devices
-(หาก adb ถูกติดตั้งแล้ว) จะแสดงข้อความ 
+<p align="center">
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="React Native is released under the MIT license" /></a>
+  <a href="https://www.npmjs.com/package/react-native"><img src="https://img.shields.io/npm/v/react-native.svg?color=blue" alt="Current npm package version" /></a>
+  <a href="https://www.npmjs.com/package/react-native"><img src="https://img.shields.io/npm/dm/react-native.svg" alt="Monthly npm downloads" /></a>
+  <a href="https://twitter.com/intent/follow?screen_name=reactnative"><img src="https://img.shields.io/badge/Follow_@reactnative-black?logo=x&logoColor=white" alt="Follow @reactnative on X" /></a>
+</p>
 
-  ยกตัวอย่าง 
-  List of devices attached 
-  emulator-5554   device 
-  
-ให้คัดลอก 
- ```bash
- emulator-5554 
- ```
-(Emulatorอาจไม่ใช่ชื่อนี้ เพียงแค่ยกตัวอย่าง)
-        
-- พิมพ์คำสั่ง เพื่อ reverse tcp เป็น 8081
-  ```bash
-  adb -s สิ่งที่คัดลอก reverse tcp:8081 tcp:8081
-  ```
-- จากนั้นใส่คำสั่งต่อไปนี้ เพื่อเปิด React Native Dev Menu
-  ```bash
-  adb shell input keyevent 82
-  ```
-แล้วคลิกเลือก Reload เป็นอันเสร็จสิ้น  
+<h4 align="center">
+  <a href="https://reactnative.dev/docs/environment-setup">Getting Started</a>
+  <span> · </span>
+  <a href="https://reactnative.dev/docs/tutorial">Learn the Basics</a>
+  <span> · </span>
+  <a href="https://reactnative.dev/showcase">Showcase</a>
+  <span> · </span>
+  <a href="https://reactnative.dev/docs/contributing">Contribute</a>
+  <span> · </span>
+  <a href="https://reactnative.dev/help">Community</a>
+  <span> · </span>
+  <a href="./.github/SUPPORT.md">Support</a>
+</h4>
 
-*** หมายเหตุ หากรันด้วย Device จริง ให้ทำคล้ายกับ Emulator โดยการ 
-รันแอป DialerApp ขึ้นมาและ ค้นหาเลข adb และ reverse tcp แบบเดียวกับ Emulator
-        
-            
-        
-    -----------------------------------------------------------------------------------------------
-        
-    
-[1.2 Windows]
-- ติดตั้ง Chocolatey (อ้างอิงจาก https://chocolatey.org/install)
-- เปิด powerShell ใส่คำสั่ง
-  ```bash
-  choco install -y nodejs-lts microsoft-openjdk17
-  ```
-หากมี node และ jdk17 แล้วให้ข้ามไป
-- ดาวน์โหลดและติดตั้ง [Android Studio] https://developer.android.com/studio
-  
-ในระหว่างการติดตั้ง Android Studio, จะมีหน้าต่าง Installation ที่ให้เลือกและติดตั้งส่วนประกอบต่างๆ
-  
-ทำเครื่องหมายในช่อง (checkbox)
-***
-    Android SDK
-  
-    Android SDK Platform
-  
-    Android Virtual Device   และ คลิก Next
-***
+# React Native
 
-- Configure ค่า ANDROID_HOME environment
+React Native lets you build native apps using [React](https://react.dev/). Written
+in JavaScript, rendered with native code.
 
-เปิด Control Panel
-  
-เลือก User Accounts จากนั้นเลือก User Accounts อีกครั้ง
-  
-เลือก Change my environment variables
-  
-กดปุ่ม New... และระบุ 
-Variable name: 
-```bash
-ANDROID_HOME
-```
+- **Native UI.** React Native primitives render to native platform UI, meaning your app
+  uses the same native platform APIs other apps do. Gestures, text scaling, and
+  accessibility behave the way users expect on each OS.
+- **React, everywhere.** Declarative UI, components, hooks, and Suspense, reused
+  across Android, iOS, and [other platforms](https://reactnative.dev/docs/out-of-tree-platforms).
+- **Developer Velocity.** See local changes in seconds. Changes to JavaScript code are applied with Fast Refresh, without rebuilding the native app.
+- **Extend it yourself.** Native Modules let you call platform code directly from JavaScript, synchronously and type-safe — or reach for [thousands of existing libraries](https://reactnative.directory/).
 
-Variable value: 
-```bash
-C:\Users\ชื่อuserในwindow\AppData\Local\Android\Sdk
-```
+React Native is developed and supported by many companies and individual core contributors. Find out more on the [React Foundation website](https://react.foundation/).
 
-- ตรวจสอบที่ตั้งของ Android SDK
-  
-SDK ถูกติดตั้งโดยปกติที่ 
-```bash
-%LOCALAPPDATA%\Android\Sdk
-```
-- ตรวจสอบตัวแปร ANDROID_HOME
-  
-เปิด PowerShell รันคำสั่งนี้เพื่อดูตัวแปรสิ่งแวดล้อมทั้งหมด
-```bash
-Get-ChildItem -Path Env:\
-```
-ตรวจสอบว่า ANDROID_HOME ถูกเพิ่มไว้ในตัวแปรสิ่งแวดล้อมหรือไม่ คำสั่งนี้จะแสดงรายการตัวแปรสิ่งแวดล้อมทั้งหมดที่มีในระบบ และจะเห็นว่า ANDROID_HOME ถูกตั้งค่าไปยังตำแหน่งของ Android SDK ที่ติดตั้งอยู่หรือไม่ 
+## Building your first React Native app
 
-- เพิ่ม platform-tools ลงใน Path
-  
+Follow the [Getting Started guide](https://reactnative.dev/docs/environment-setup) for a new app, or [Integration with Existing Apps](https://reactnative.dev/docs/integration-with-existing-apps) to adopt React Native incrementally.
 
-ไปที่ Control Panel -> User Accounts -> User Accounts 
+### Using a Framework
 
-คลิกที่ Change my environment variables 
+We believe that the best way to experience React Native is through a Framework, a toolbox with all the necessary APIs to let you build production ready apps. [Expo](https://docs.expo.dev/get-started/set-up-your-environment/) is a production-grade React Native Framework, with file-based routing, a standard library of native modules, and much more.
 
-ในหน้าต่าง Environment Variables, ให้เลือก Path ใน System variables หรือ User variables(ขึ้นอยู่กับว่าต้องการตั้งค่าระดับไหน) 
+To create a new Expo project, run the following in your terminal:
 
-คลิก Edit และเลือก New เพื่อลงเพิ่ม Path ใหม่ 
+    npx create-expo-app@latest
 
-เพิ่มตำแหน่งของ platform-tools ซึ่งโดยปกติจะอยู่ที่: 
-```bash
-%LOCALAPPDATA%\Android\Sdk\platform-tools
-```
-คลิก OK  
+Then follow the rest of [Expo's getting started guide](https://docs.expo.dev/get-started/set-up-your-environment/) to start building.
 
-- ตรวจสอบการตั้งค่า
-  
-หลังจากตั้งค่าตัวแปรสิ่งแวดล้อม ANDROID_HOME และเพิ่ม platform-tools ลงใน Path แล้ว 
+### Without a Framework
 
-สามารถตรวจสอบว่าได้ทำการตั้งค่าถูกต้องหรือไม่โดยการเปิด PowerShell และรันคำสั่ง 
-```bash
-adb --version
-```
-ถ้าทุกอย่างถูกตั้งค่าเรียบร้อย, จะเห็นเวอร์ชันของ adb 
+You can also use React Native without a Framework, however we've found that most developers benefit from one — navigation, native dependencies, and platform tooling are problems the ecosystem has already solved. If a Framework doesn't suit your app, follow [Getting Started Without a Framework](https://reactnative.dev/docs/getting-started-without-a-framework).
 
-- เปิด <VSCode> และเปิดโปรเจคต์ open -> dialer-app-main จากนั้นกดปุ่ม Open
-  
-ในช่อง terminal ของ VSCode ให้ติดตั้ง node_modules ด้วยคำสั่ง 
-```bash
-npm install
-```
-จากนั้นให้สตาร์ท server ด้วยคำสั่ง 
-```bash
-npm start
-```
-- เปิด Android Studio และเปิดโปรเจคต์ open -> dialer-app-main -> android และคลิกปุ่ม Open
+## Documentation
 
-จากนั้นรอ Android Studio Building สักครู่ (สังเกตจากหลอดมุมขวาล่าง) 
-- เลือก Emulator ที่ต้องการเปิด (หากไม่มีให้สร้างใน Device Manager) หากมีให้แล้วกดปุ่ม Run ได้เลย
-     
-- เมื่อ Emulator รันแอป DialerApp ขึ้นมาแล้ว ให้ค้นหาเลข adb ใน terminal VSCode
-  ```bash
-  adb devices
-(หาก adb ถูกติดตั้งแล้ว) จะแสดงข้อความ 
+The full documentation for React Native can be found on our [website](https://reactnative.dev/docs/getting-started).
 
-  ยกตัวอย่าง 
-  List of devices attached 
-  emulator-5554   device 
-  
-ให้คัดลอก 
- ```bash
- emulator-5554 
- ```
-(Emulatorอาจไม่ใช่ชื่อนี้ เพียงแค่ยกตัวอย่าง)
-        
-- พิมพ์คำสั่ง เพื่อ reverse tcp เป็น 8081
-  ```bash
-  adb -s สิ่งที่คัดลอก reverse tcp:8081 tcp:8081
-  ```
-- จากนั้นใส่คำสั่งต่อไปนี้ เพื่อเปิด React Native Dev Menu
-  ```bash
-  adb shell input keyevent 82
-  ```
-แล้วคลิกเลือก Reload เป็นอันเสร็จสิ้น  
+- [Introduction](https://reactnative.dev/docs/getting-started)
+- [Getting Started](https://reactnative.dev/docs/environment-setup)
+- [Learn the Basics](https://reactnative.dev/docs/tutorial)
+- [Components and APIs](https://reactnative.dev/docs/components-and-apis)
+- [UI & Interaction](https://reactnative.dev/docs/style)
+- [Native Modules](https://reactnative.dev/docs/native-platform)
+- [Debugging](https://reactnative.dev/docs/debugging)
+- [Upgrading](https://reactnative.dev/docs/upgrading)
+- [Architecture](https://reactnative.dev/architecture/overview)
 
-*** หมายเหตุ หากรันด้วย Device จริง ให้ทำคล้ายกับ Emulator โดยการ 
-รันแอป DialerApp ขึ้นมาและ ค้นหาเลข adb และ reverse tcp แบบเดียวกับ Emulator 
+The source for the React Native docs and website is hosted on a separate repository, [**react/react-native-website**](https://github.com/react/react-native-website).
 
+## Contributing
 
-  
+The main purpose of this repository is to continue evolving React Native core. We want to make contributing to this project as easy and transparent as possible, and we are grateful to the community for contributing bug fixes and improvements. Read below to learn how you can take part in improving React Native.
 
-หากติดปัญหาติดต่อได้ที่ kritsada.buain@hotmail.com
+### [Code of Conduct](https://code.fb.com/codeofconduct/)
+
+Meta has adopted a Code of Conduct that we expect project participants to adhere to.
+Please read the [full text](https://code.fb.com/codeofconduct/) so that you can understand what actions will and will not be tolerated.
+
+### [Contributing Guide](https://reactnative.dev/docs/contributing)
+
+Read our [**Contributing Guide**](https://reactnative.dev/docs/contributing) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to React Native.
+
+### Discussions
+
+Larger discussions and proposals are discussed in [**react-native-community/discussions-and-proposals**](https://github.com/react-native-community/discussions-and-proposals).
+
+React Native releases are discussed in [**reactwg/react-native-releases**](https://github.com/reactwg/react-native-releases/discussions).
+
+## License
+
+React Native is MIT licensed, as found in the [LICENSE](./LICENSE) file.
