@@ -16,6 +16,7 @@ module.exports = {
         ],
         alias: {
           '@': './src',
+          '@custom-libraries': './src/custom-libraries',
           '@hooks': './src/hooks',
           '@modules': './src/modules',
           '@styles': './styles',

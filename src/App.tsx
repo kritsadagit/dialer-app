@@ -1,8 +1,8 @@
 import React from 'react';
-import DialerScreen from './modules/dialer/presentation/screens';
+import MainNavigation from './navigation/MainNavigation';
 
 const App = () => {
-  return <DialerScreen />;
+  return <MainNavigation />;
 };
 
 export default App;
