@@ -1,4 +1,7 @@
-const star = require('@assets/icons/star.png');
-const backspace = require('@assets/icons/backspace.png');
+import type {ImageSourcePropType} from 'react-native';
 
-export {star, backspace};
+const star: ImageSourcePropType = require('@assets/icons/star.png');
+const backspace: ImageSourcePropType = require('@assets/icons/backspace.png');
+const phone: ImageSourcePropType = require('@assets/icons/phone.png');
+
+export {star, backspace, phone};

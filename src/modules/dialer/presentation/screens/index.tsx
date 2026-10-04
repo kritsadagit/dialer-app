@@ -13,6 +13,7 @@ const DialerScreen = () => {
     recieveKeypad,
     recieveDelPress,
     recieveDelLongPress,
+    onHandleCall
   } = DialerViewModel();
 
   return (
@@ -24,9 +25,11 @@ const DialerScreen = () => {
 
         <View style={[styles.section, {paddingVertical: height * 0.05}]}>
           <KeypadButton
+            showDelButton={input.length > 0}
             senderKeypad={recieveKeypad}
             senderDelPress={recieveDelPress}
             senderDelLongPress={recieveDelLongPress}
+            onHandleCall={onHandleCall}
           />
         </View>
       </View>

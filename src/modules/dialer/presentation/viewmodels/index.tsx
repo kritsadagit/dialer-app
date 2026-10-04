@@ -1,4 +1,4 @@
-import {TextInputInstance, Vibration} from 'react-native';
+import {Linking, TextInputInstance, Vibration} from 'react-native';
 import {useCallback, useEffect, useRef, useState} from 'react';
 import useResponsive from '@hooks/useResponsive';
 
@@ -32,6 +32,16 @@ const DialerViewModel = () => {
     }
   }, [input]);
 
+  const onHandleCall = useCallback(() => {
+    if (!input) return;
+
+    const phoneNumber = input.replace(/[^0-9*#]/g, '');
+
+    Linking.openURL(`tel:${phoneNumber}`).catch(error => {
+      console.error('Failed to open dialer', error);
+    });
+  }, [input]);
+
   // Stable refs so KeypadButton's memoized keys don't re-render on every keypress.
   const recieveKeypad = useCallback((item: string) => {
     setInput(prevState => {
@@ -60,6 +70,7 @@ const DialerViewModel = () => {
     recieveKeypad,
     recieveDelPress,
     recieveDelLongPress,
+    onHandleCall,
   };
 };
 

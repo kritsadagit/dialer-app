@@ -6,16 +6,19 @@ import {
   TouchableOpacity,
   useWindowDimensions,
   Image,
+  ImageSourcePropType,
 } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
-import {backspace, star} from '@assets/icons';
+import {backspace, star, phone} from '@assets/icons';
 import {SECONDARY_COLOR, PRIMARY_COLOR, DARK_COLOR} from '@styles/globalStyles';
 import {styles} from './styles';
 
 interface Props {
+  showDelButton: boolean;
   senderKeypad: (item: string) => void;
   senderDelPress: () => void;
   senderDelLongPress: () => void;
+  onHandleCall: () => void;
 }
 
 interface KeypadKeyProps {
@@ -30,7 +33,13 @@ interface KeypadKeyProps {
   onLongPress: (item: string) => void;
 }
 
-const DIAL_PAD = [
+const ICONS: Partial<Record<string, ImageSourcePropType>> = {
+  '*': star,
+  del: backspace,
+  tel: phone,
+};
+
+const DIAL_PAD_KEYS = [
   '1',
   '2',
   '3',
@@ -43,9 +52,6 @@ const DIAL_PAD = [
   '*',
   '0',
   '#',
-  '',
-  '',
-  'del',
 ];
 
 // Memoized so pressing one key only re-renders that key, not the whole pad.
@@ -66,8 +72,7 @@ const KeypadKey = memo<KeypadKeyProps>(
       return <View style={{width: buttonSize, height: buttonSize}} />;
     }
 
-    const isStarButton = item === '*';
-    const isDelButton = item === 'del';
+    const iconSource = ICONS[item];
     const buttonColor = isActive ? PRIMARY_COLOR : SECONDARY_COLOR;
 
     return (
@@ -87,9 +92,9 @@ const KeypadKey = memo<KeypadKeyProps>(
           },
         ]}
       >
-        {isDelButton || isStarButton ? (
+        {iconSource ? (
           <Image
-            source={isStarButton ? star : backspace}
+            source={iconSource}
             style={{width: sizeIcons, height: sizeIcons}}
           />
         ) : (
@@ -106,12 +111,20 @@ const KeypadKey = memo<KeypadKeyProps>(
 );
 
 const KeypadButton: FC<Props> = ({
+  showDelButton,
   senderKeypad,
   senderDelPress,
   senderDelLongPress,
+  onHandleCall,
 }) => {
   const {scale} = useWindowDimensions();
   const isTablet = useMemo(() => DeviceInfo.isTablet(), []);
+
+  // Leading spacer plus tel keep the last row at 3 columns whether or not del is shown.
+  const dialPad = useMemo(
+    () => [...DIAL_PAD_KEYS, '', 'tel', showDelButton ? 'del' : ''],
+    [showDelButton],
+  );
 
   const {spacingGap, buttonSize, sizeIcons} = useMemo(
     () => ({
@@ -136,11 +149,13 @@ const KeypadButton: FC<Props> = ({
     (item: string) => {
       if (item === 'del') {
         senderDelPress();
+      } else if (item === 'tel') {
+        onHandleCall();
       } else {
         senderKeypad(item);
       }
     },
-    [senderDelPress, senderKeypad],
+    [senderDelPress, senderKeypad, onHandleCall],
   );
 
   const onHandleLongPress = useCallback(
@@ -180,7 +195,7 @@ const KeypadButton: FC<Props> = ({
 
   return (
     <FlatList
-      data={DIAL_PAD}
+      data={dialPad}
       numColumns={3}
       renderItem={renderKeypadButton}
       columnWrapperStyle={{gap: spacingGap}}
