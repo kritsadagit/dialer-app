@@ -1,6 +1,5 @@
-import {View, Text} from 'react-native';
 import React from 'react';
-import DialerScreen from './src/screens/DialerScreen';
+import DialerScreen from './modules/dialer/presentation/screens';
 
 const App = () => {
   return <DialerScreen />;
