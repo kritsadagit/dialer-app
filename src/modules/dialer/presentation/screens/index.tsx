@@ -24,7 +24,6 @@ const DialerScreen = () => {
 
         <View style={[styles.section, {paddingVertical: height * 0.05}]}>
           <KeypadButton
-            input={input}
             senderKeypad={recieveKeypad}
             senderDelPress={recieveDelPress}
             senderDelLongPress={recieveDelLongPress}

@@ -16,28 +16,34 @@ const DialerViewModel = () => {
     }
   }, [input]);
 
+  const formatPhoneNumber = (numOnly: string) => {
+    const len = numOnly.length;
+
+    if (len <= 3) {
+      return numOnly;
+    }
+    if (len <= 6) {
+      return `(${numOnly.slice(0, 3)}) ${numOnly.slice(3, 6)}`;
+    }
+    return `(${numOnly.slice(0, 3)}) ${numOnly.slice(3, 6)}-${numOnly.slice(
+      6,
+      10,
+    )}`;
+  };
+
   const recieveKeypad = (item: string) => {
     setInput(prevState => {
-      const numOnly = (prevState + item).replace(/[^0-9]/g, '');
-      const len = numOnly.length;
-      let formatted = '';
-
-      if (len <= 3) {
-        formatted = numOnly;
-      } else if (len <= 6) {
-        formatted = `(${numOnly.slice(0, 3)}) ${numOnly.slice(3, 6)}`;
-      } else if (len > 6) {
-        formatted += `(${numOnly.slice(0, 3)}) ${numOnly.slice(
-          3,
-          6,
-        )}-${numOnly.slice(6, 10)}`;
-      }
-      return formatted;
+      const numOnly = (prevState + item).replace(/[^0-9*#]/g, '');
+      return formatPhoneNumber(numOnly);
     });
   };
 
   const recieveDelPress = () => {
-    setInput(prevState => prevState.slice(0, -1));
+    setInput(prevState => {
+      // strip formatting symbols first so a single press removes one digit, not one symbol
+      const numOnly = prevState.replace(/[^0-9*#]/g, '');
+      return formatPhoneNumber(numOnly.slice(0, -1));
+    });
   };
 
   const recieveDelLongPress = () => {
